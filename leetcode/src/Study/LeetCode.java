@@ -51,8 +51,6 @@ public class LeetCode {
 
     }
 
-
-
     public int middleSub(int[] numbs) {
 
         int numbSUM = 0, leftSum = 0;
@@ -199,23 +197,6 @@ public class LeetCode {
         insertion(nums, j + 1);
     }  //直接插入排序
 
-    public void selectSort(int[] nums,int j){
-        if (j==nums.length-1)
-        {
-            return;
-        }
-
-        int temp = 0;
-        for (int i = j+1; i < nums.length; i++) {
-            if (nums[i]<nums[j]){
-                temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
-            }
-        }
-        selectSort(nums,j+1);
-    }
-
     public void selectSort(int[] nums){
         int temp = 0;
         for (int i = nums.length - 1; i > 0; i--) {
@@ -348,24 +329,73 @@ public class LeetCode {
         }
 
     }
-
-
-
-    public void split(int[] nums,int i,int j){
-
-
+    /**
+     * @discription 归并排序的外部入口
+     * @author dme
+     * @date 2025/8/31 16:39
+     * @param nums
+     * @return {@code }
+     **/
+    public void mergeSort(int[] nums){
+        int [] temp = new int[nums.length];
+        split(nums,0,nums.length-1,temp);
+        System.out.println(Arrays.toString(nums));
+    }
+    /**
+     * @discription 实现归并算法归并函数 自上而下
+     * @author dme
+     * @date 2025/8/31 16:39
+     * @param nums
+     * @param i
+     * @param j
+     * @param temp
+     * @return {@code }
+     **/
+    private void split(int[] nums,int i,int j,int [] temp){
         if (i==j){
             return;
         }
         int m  = (i + j) >>1;
-        split(nums,i,m);
-
-        split(nums,m+1,j);
-
-
+        split(nums,i,m,temp);
+        split(nums,m+1,j,temp);
+        merge(nums,i,m, m+1,j,temp);//读取nums的数据元素 按顺序放入temp 再把temp的数据返回nums
+        System.arraycopy(temp,i,nums,i,j-i+1);
     }
+    /**
+     * @discription 将nums数组中的两个有序序列合并到temp数组中
+     * @author dme
+     * @date 2025/8/31 16:20
+     * @param nums
+     * @param i
+     * @param j
+     * @param x
+     * @param y
+     * @param temp
+     * @return {@code }
+     **/
     public void merge(int[] nums,int i,int j,int x,int y,int [] temp){
 
+      //将nums中的两个有序序列合并到temp
+        int k = i;
+        while (i<=j&&x<=y)
+        {
+            if (nums[i]<nums[x])
+            {
+                temp[k] = nums[i];
+                i++;
+            }
+            else {
+                temp[k] = nums[x];
+                x++;
+            }
+            k++;
+        }
+        if (i>j){
+            System.arraycopy(nums,x,temp,k,y-x+1);
+        }
+        if (x>y){
+            System.arraycopy(nums,i,temp,k,j-i+1);
+        }
     }
 
 

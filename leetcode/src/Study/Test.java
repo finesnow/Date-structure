@@ -23,7 +23,9 @@ public  class Test {
 
     public static void main(String[] args) {
 
-        System.out.println("test分支修改");
+       int []  nums = {9,7,3,5,11,12,1,8};
+
+       new LeetCode().mergeSort(nums);
 
     }
 
