@@ -40,6 +40,12 @@ public class Test {
     }
 
 
+    public void newMethod(){
+
+
+    }
+
+
 
 
 
