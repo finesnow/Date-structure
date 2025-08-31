@@ -43,20 +43,12 @@ import java.util.LinkedList;
 @SuppressWarnings("SpellCheckingInspection")
 public class LeetCode {
 
-
-    public static void main(String[] args) {
-        int[] array = {1,5,7,6,11,3,9,8};
-        new LeetCode().shellSort(array);
-        System.out.println(Arrays.toString(array));
-
-    }
-
     public int middleSub(int[] numbs) {
 
         int numbSUM = 0, leftSum = 0;
-        for (int i = 0; i < numbs.length; i++) {
+        for (int numb : numbs) {
 
-            numbSUM += numbs[i];
+            numbSUM += numb;
 
         }
 
@@ -89,12 +81,14 @@ public class LeetCode {
         //left其实就是目标插入点，也就是目标插入后的索引
         return -1;
     }
+
     /**
-     *二分查找，数组中可能存在重复的数据元素，返回最靠左的{@code int}的下标，如果没找到将返回{@code  -1}
-     * @param nums 查找的目标数组
-     * @param target  要查找的目标值
+     * 二分查找，数组中可能存在重复的数据元素，返回最靠左的{@code int}的下标，如果没找到将返回{@code  -1}
+     *
+     * @param nums   查找的目标数组
+     * @param target 要查找的目标值
      * @return 找到目标时返回 {@code -1}, 否则返回一个{@code int}代表目标的下标
-     * */
+     */
     public int binaryLeft(int[] nums, int target) {
 
         //有序数组中可能存在重复元素，此算法返回最靠左的那个数据元素
@@ -119,6 +113,16 @@ public class LeetCode {
 
     }   //二分查找 最靠左
 
+    /**
+     * @param nums
+     * @param target
+     * @param left
+     * @param right
+     * @return {@code int}
+     * @discription 递归二分
+     * @author dme
+     * @date 2025/8/31 21:03
+     **/
     public int recurtionBinarySearch(int[] nums, int target, int left, int right) {
         //用递归的方式实现二分法查找元素
         if (left > right) {
@@ -141,10 +145,15 @@ public class LeetCode {
         //left其实就是目标插入点，也就是目标插入后的索引
 
     }  //递归二分查找
+
     /**
-     * @param nums 需要进行排序的数组
-     * @param j  已经排好序的界限
-    * */
+     * @param nums
+     * @param j
+     * @return {@code }
+     * @discription 递归冒泡排序
+     * @author dme
+     * @date 2025/8/31 21:03
+     **/
     public void recurtionBubble(int[] nums, int j) {
         //用递归的方法写冒泡排序法。j指得是已经排好序的元素边界
         int tmp;
@@ -159,8 +168,16 @@ public class LeetCode {
             }
             recurtionBubble(nums, j - 1);
         }
-    }       //递归冒泡排序
+    }
 
+    /**
+     * @param nums
+     * @param j
+     * @return {@code }
+     * @discription 通过记住最后一次交换的位置，优化冒泡排序
+     * @author dme
+     * @date 2025/8/31 21:02
+     **/
     public void betterRecurtionBubble(int[] nums, int j) {
         //用递归的方法写冒泡排序法。j指得是已经排好序的元素边界,j同样需要参与比较，第一次执行j一般等于leng-1
         int tmp, x = j - 1;
@@ -180,6 +197,14 @@ public class LeetCode {
         }
     } //优化的递归冒泡
 
+    /**
+     * @param nums
+     * @param j
+     * @return {@code }
+     * @discription 插入排序法，多次比较、移动  一次插入
+     * @author dme
+     * @date 2025/8/31 21:01
+     **/
     public void insertion(int[] nums, int j) {
         //直接插入排序  j依然是边界
         if (j == nums.length - 1)
@@ -197,13 +222,19 @@ public class LeetCode {
         insertion(nums, j + 1);
     }  //直接插入排序
 
-    public void selectSort(int[] nums){
+    /**
+     * @param nums
+     * @return {@code }
+     * @discription 选择排序法 多次比较 一次交换
+     * @author dme
+     * @date 2025/8/31 21:01
+     **/
+    public void selectSort(int[] nums) {
         int temp = 0;
         for (int i = nums.length - 1; i > 0; i--) {
             int max = i;
-            for (int j = 0;j<i;j++)
-            {
-                if (nums[j]>nums[max]){
+            for (int j = 0; j < i; j++) {
+                if (nums[j] > nums[max]) {
                     max = j;
                 }
             }
@@ -213,158 +244,154 @@ public class LeetCode {
         }
     }
 
-    public int fionacci(int n){
+    public int fionacci(int n) {
 
-        if (n==0)
+        if (n == 0)
             return 0;
-        else if (n==1)
+        else if (n == 1)
             return 1;
 
-        return fionacci(n-1) + fionacci(n-2);
+        return fionacci(n - 1) + fionacci(n - 2);
 
     }  //斐波那契数列  时间复杂度 O（1.618的n次方）
 
-    public int betterFionacci(int n,HashMap<Integer, Integer> map){
+    public int betterFionacci(int n, HashMap<Integer, Integer> map) {
 
         if (map.containsKey(n))
             return map.get(n);
-        if (n==0){
-            map.put(0,0);
+        if (n == 0) {
+            map.put(0, 0);
             return 0;
-        }
-        else if (n==1)
-        {
-            map.put(1,1);
+        } else if (n == 1) {
+            map.put(1, 1);
             return 1;
         }
-        map.put(n,betterFionacci(n-1,map)+betterFionacci(n-2,map));
+        map.put(n, betterFionacci(n - 1, map) + betterFionacci(n - 2, map));
         return map.get(n);
     }  // 记忆法优化递归
 
-    public void hanoTower(int n, LinkedList<Integer> a,LinkedList<Integer> b,LinkedList<Integer> c){
+    public void hanoTower(int n, LinkedList<Integer> a, LinkedList<Integer> b, LinkedList<Integer> c) {
 
         //n是需要移动的盘子数量，a借助b，移动到c
-        if (n==0){
+        if (n == 0) {
             return;
         }
-        hanoTower(n-1,a,c,b);
+        hanoTower(n - 1, a, c, b);
         c.add(a.getLast());
-        hanoTower(n-1,b,a,c);
+        hanoTower(n - 1, b, a, c);
     }   //汉诺塔问题
 
-    public int yangHuiTriangle(int i,int j){
-        if (j==0||i == j){
+    public int yangHuiTriangle(int i, int j) {
+        if (j == 0 || i == j) {
             return 1;
         }
 
-        return yangHuiTriangle(i-1,j-1)+yangHuiTriangle(i-1,j);
+        return yangHuiTriangle(i - 1, j - 1) + yangHuiTriangle(i - 1, j);
 
     }   //杨辉三角
-/**
- * @description 堆排序算法，借助堆实现数组排序
- * @param array 需要进行排序的数组
- * @author dme
- * @date  2025/8/23 11:35
- *
- */
-    public void heapSort(int[] array){
+
+    /**
+     * @param array 需要进行排序的数组
+     * @description 堆排序算法，借助堆实现数组排序
+     * @author dme
+     * @date 2025/8/23 11:35
+     */
+    public void heapSort(int[] array) {
         MaxHeap maxHeap = new MaxHeap(array);
         maxHeap.heapify();
-        while (maxHeap.size>1){
-            maxHeap.swap(0, maxHeap.size-1);
+        while (maxHeap.size > 1) {
+            maxHeap.swap(0, maxHeap.size - 1);
             maxHeap.size--;
             maxHeap.down(0);
         }
         System.out.println(Arrays.toString(maxHeap.array));
     }
-/**
- * @description 检查一棵二叉树是否是对称的
- * @param
- * @return
- * @author dme
- * @date  2025/8/23 15:35
- *
- */
 
-    public boolean check(TreeNode left,TreeNode right){
-        if (left==null && right==null){
+    /**
+     * @param
+     * @return
+     * @description 检查一棵二叉树是否是对称的
+     * @author dme
+     * @date 2025/8/23 15:35
+     */
+
+    public boolean check(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
             return true;
-        }
-        else if (left==null||right==null){
+        } else if (left == null || right == null) {
             return false;
         }
 
-        if (left.getValue()!=right.getValue())
+        if (left.getValue() != right.getValue())
             return false;
 
-        return check(left.getLeft(),right.getRight())&&check(left.getRight(),right.getLeft());
+        return check(left.getLeft(), right.getRight()) && check(left.getRight(), right.getLeft());
     }
 
-    public void shellSort(int[] nums){
-        for (int gap = nums.length>>1;gap>=1;gap = gap>>1)
-        {
-//            for (int low = 1;low<nums.length;low++)
-//            {
-//                int i = low-1;
-//                int value = nums[low];
-//                while (i>=0&&nums[i]>nums[low])
-//                {
-//                    nums[i+1] = nums[i];
-//                    i--;
-//                }
-//                nums[i+1] = value;
-//            }
-            for (int low = gap;low<nums.length;low++)  //gap相当于是新的数组的元素间距
+    public void shellSort(int[] nums) {
+        for (int gap = nums.length >> 1; gap >= 1; gap = gap >> 1) {
+
+            for (int low = gap; low < nums.length; low++)  //gap相当于是新的数组的元素间距
             {
-                int i = low-gap;
+                int i = low - gap;
                 int value = nums[low];
-                while (i>=0&&nums[i]>value)
-                {
-                    nums[i+gap] = nums[i];
-                    i-=gap;
+                while (i >= 0 && nums[i] > value) {
+                    nums[i + gap] = nums[i];
+                    i -= gap;
                 }
-                nums[i+gap] = value;
+                nums[i + gap] = value;
             }
 
         }
 
     }
+
     /**
+     * @param nums
+     * @return {@code }
      * @discription 归并排序的外部入口
      * @author dme
      * @date 2025/8/31 16:39
-     * @param nums
-     * @return {@code }
      **/
-    public void mergeSort(int[] nums){
-        int [] temp = new int[nums.length];
-        split(nums,0,nums.length-1,temp);
-        System.out.println(Arrays.toString(nums));
+    public void mergeSort(int[] nums) {
+        int[] temp = new int[nums.length];
+        split(nums, 0, nums.length - 1, temp);
+
     }
+
     /**
-     * @discription 实现归并算法归并函数 自上而下
-     * @author dme
-     * @date 2025/8/31 16:39
      * @param nums
      * @param i
      * @param j
      * @param temp
      * @return {@code }
+     * @discription 实现归并算法归并函数 自上而下
+     * @author dme
+     * @date 2025/8/31 16:39
      **/
-    private void split(int[] nums,int i,int j,int [] temp){
-        if (i==j){
+    private void split(int[] nums, int i, int j, int[] temp) {
+        //分到数组中仅有一个元素
+        if (i == j) {
             return;
         }
-        int m  = (i + j) >>1;
-        split(nums,i,m,temp);
-        split(nums,m+1,j,temp);
-        merge(nums,i,m, m+1,j,temp);//读取nums的数据元素 按顺序放入temp 再把temp的数据返回nums
-        System.arraycopy(temp,i,nums,i,j-i+1);
+        if (j - i <= 16) {  //当数组已经被分到足够小，我们让它进行插入排序
+            //插入排序
+            limitInsertSort(nums, i, j);
+            return;
+        }
+        //分
+        int m = (i + j) >> 1;
+        split(nums, i, m, temp);
+        split(nums, m + 1, j, temp);
+
+        //开始合并
+        merge(nums, i, m, m + 1, j, temp);
+
+        //读取nums的数据元素 按顺序放入temp 再把temp的数据返回nums
+        System.arraycopy(temp, i, nums, i, j - i + 1);
     }
+
     /**
-     * @discription 将nums数组中的两个有序序列合并到temp数组中
-     * @author dme
-     * @date 2025/8/31 16:20
      * @param nums
      * @param i
      * @param j
@@ -372,32 +399,126 @@ public class LeetCode {
      * @param y
      * @param temp
      * @return {@code }
+     * @discription 将nums数组中的两个有序序列合并到temp数组中
+     * @author dme
+     * @date 2025/8/31 16:20
      **/
-    public void merge(int[] nums,int i,int j,int x,int y,int [] temp){
-
-      //将nums中的两个有序序列合并到temp
+    public void merge(int[] nums, int i, int j, int x, int y, int[] temp) {
+        //将nums中的两个有序序列合并到temp
         int k = i;
-        while (i<=j&&x<=y)
-        {
-            if (nums[i]<nums[x])
-            {
+        while (i <= j && x <= y) {
+            if (nums[i] < nums[x]) {
                 temp[k] = nums[i];
                 i++;
-            }
-            else {
+            } else {
                 temp[k] = nums[x];
                 x++;
             }
             k++;
         }
-        if (i>j){
-            System.arraycopy(nums,x,temp,k,y-x+1);
+        if (i > j) {
+            System.arraycopy(nums, x, temp, k, y - x + 1);
         }
-        if (x>y){
-            System.arraycopy(nums,i,temp,k,j-i+1);
+        if (x > y) {
+            System.arraycopy(nums, i, temp, k, j - i + 1);
         }
     }
 
+    /**
+     * @return {@code }
+     * @discription 非递归方法 归并 利用宽度进行分组
+     * @author dme
+     * @date 2025/8/31 19:34
+     **/
+    public void mergeSort2(int[] nums) {
+        int n = nums.length;
+        int[] temp = new int[nums.length];
+        for (int width = 1; width <= n / 2 + 1; width = width * 2) {
 
+            for (int i = 0; i < n; i += width * 2) {
+                int j = i + width;
+                int right = Math.min(n - 1, j + width - 1);
+                merge(nums, i, i + width - 1, j, right, temp);
+            }
+            //执行完一圈 及时覆盖nums  不然nums依然是无序的
+            System.arraycopy(temp, 0, nums, 0, n);
+        }
+    }
 
+    /**
+     * @param nums
+     * @param i
+     * @param j
+     * @return {@code }
+     * @discription 限制了两个边界的插入排序
+     * @author dme
+     * @date 2025/8/31 20:58
+     **/
+    public void limitInsertSort(int[] nums, int i, int j) {
+        for (int y = i; y < j; y++) {
+            int x = y;
+            int value = nums[x + 1];
+            while (x >= i && value < nums[x]) {
+                nums[x + 1] = nums[x];
+                x--;
+            }
+            nums[x + 1] = value;
+        }
+    }
+
+    public void quickSort(int[] nums) {
+        quickSort(nums,0,nums.length-1);
+    }
+
+    /**
+     * @param nums
+     * @param i
+     * @param j
+     * @return {@code }
+     * @discription 双边快排
+     * @author dme
+     * @date 2025/8/31 21:10
+     **/
+    public void quickSort(int[] nums, int i, int j) {
+        if (i >= j) {
+            return;
+        }
+        int p = partition(nums, i, j); //p的位置已经确定，不用再考虑
+        quickSort(nums, i, p - 1);
+        quickSort(nums, p + 1, j);
+    }
+    /**
+     * @discription 锁定基准元素的位置并返回
+     * @author dme
+     * @date 2025/8/31 22:17
+     * @param nums
+     * @param i
+     * @param j
+     * @return {@code int}
+     **/
+    public int partition(int[] nums, int i, int j) {
+        int p = nums[i];
+        int index = i; //记录一开始基准的下标
+        int temp;
+
+        while (i < j) {
+            while (i < j && nums[j] > p) {
+                j--;
+            }
+
+            while (i < j && nums[i] <= p) {
+                i++;
+            }
+            //交换
+            temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+
+        }
+        temp = nums[i];
+        nums[i] = nums[index];
+        nums[index] = temp;
+        return i;
+
+    }
 }
