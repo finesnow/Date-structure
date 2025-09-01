@@ -330,7 +330,6 @@ public class LeetCode {
 
     public void shellSort(int[] nums) {
         for (int gap = nums.length >> 1; gap >= 1; gap = gap >> 1) {
-
             for (int low = gap; low < nums.length; low++)  //gap相当于是新的数组的元素间距
             {
                 int i = low - gap;
@@ -341,9 +340,7 @@ public class LeetCode {
                 }
                 nums[i + gap] = value;
             }
-
         }
-
     }
 
     /**
@@ -455,6 +452,7 @@ public class LeetCode {
      * @date 2025/8/31 20:58
      **/
     public void limitInsertSort(int[] nums, int i, int j) {
+
         for (int y = i; y < j; y++) {
             int x = y;
             int value = nums[x + 1];
@@ -521,4 +519,5 @@ public class LeetCode {
         return i;
 
     }
+
 }

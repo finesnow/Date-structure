@@ -1,6 +1,8 @@
 package Solutions;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * @author Administrator
@@ -193,8 +195,136 @@ public class Solution {
         }
         return 0;
     }
+    /**
+     * @discription leetcode88 合并两个有序数组 将合并后的结果存入nums1
+     * @author dme
+     * @date 2025/9/1 20:40
+     * @param nums1
+     * @param m
+     * @param nums2
+     * @param n
+     * @return {@code }
+     **/
+    public void mergeTwoArray(int[] nums1, int m, int[] nums2, int n) {
+            if (n==0){
+                return;
+            }
+            if(m==0){
+                System.arraycopy(nums2,0,nums1,0,n);
+                return;
+            }
+            int i =0,j=0;
+            int index = 0;
+            while (index<m&&j<n){
+                if (nums1[i]>nums2[j]){
+                    //后移腾出位置 数组复制的长度应该的等于数组1的剩余长度
+                    System.arraycopy(nums1,i,nums1,i+1,m-index);
+                    nums1[i] = nums2[j];
+                    j++;
+                }
+                else {
+                    index++;
+                }
+                i++;
+            }
+            if (index==m){
+                while (j<n){
+                    nums1[i] = nums2[j];
+                    i++;j++;
+                }
+            }
 
 
+    }
+    /**
+     * @discription 移除所有指定值的元素
+     * @author dme
+     * @date 2025/9/1 21:50
+     * @param nums
+     * @param val
+     * @return {@code int}
+     **/
+    public int removeElement(int[] nums, int val) {
+
+//        if (nums.length==0)
+//        {
+//            return 0;
+//        }
+//        int length = nums.length;
+//        int i = 0;
+//        for (int j=0; j<nums.length; i++,j++) {
+//            if (nums[i] == val)
+//            {
+//                System.arraycopy(nums,i+1,nums,i,nums.length-i-1);
+//                i--;
+//            }
+//        }
+//        return i;
+        //双指针 一个负责读 一个负责覆写
+        int n = nums.length;
+        int left = 0;
+        for (int right = 0; right < n; right++) {
+            if (nums[right] != val) {
+                nums[left] = nums[right];
+                left++;
+            }
+        }
+        return left;
+
+    }
+    /**
+     * @discription 移除重复的元素 将数组的前半部分视为一个新数组 每次发现新元素时，添加到新数组
+     * @author dme
+     * @date 2025/9/1 21:53
+     * @param nums
+     * @return {@code int}
+     **/
+    public int removeDuplicates(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int p = 0;
+        int q = 1;
+
+        for (;q<nums.length;q++){
+            if (nums[q] !=nums[p])
+            {
+                p++;
+                nums[p] = nums[q];
+            }
+        }
+        return p+1;
+
+    }
+    /**
+     * @discription 移除重复元素 但是允许重复一次
+     * @author dme
+     * @date 2025/9/1 22:09 
+     * @param nums 
+     * @return {@code int}    
+     **/
+    public int removeDuplicates2(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int p = 0;
+        int q = 1;
+        int count = 0;
+        for (;q<nums.length;q++){
+            if (nums[q] !=nums[p])
+            {
+                p++;
+                nums[p] = nums[q];
+                count = 0;
+            }
+            else {
+                if (count<1)
+                {
+                    p++;
+                    nums[p] = nums[q];
+                }
+                count++;
+            }
+
+        }
+        return p+1;
+    }
 
 }
 

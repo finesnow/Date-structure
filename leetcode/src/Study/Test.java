@@ -24,9 +24,13 @@ public  class Test {
 
     public static void main(String[] args) {
 
-       int []  nums = {9,7,3,5,11,12,1,8};
-        new LeetCode().quickSort(nums);
-       System.out.println(Arrays.toString(nums));
+//       int []  nums = {9,7,3,5,11,12,1,8};
+//        new LeetCode().quickSort(nums);
+//       System.out.println(Arrays.toString(nums));
+        int x = -5;
+        System.out.println(~x+1);
+
+
 
     }
 

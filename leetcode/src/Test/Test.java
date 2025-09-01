@@ -3,6 +3,9 @@ package Test;
 
 import Study.HashTable;
 
+import java.util.HashSet;
+import java.util.Scanner;
+
 /**
  * @author Administrator
  * @Date 2025/8/27 13:07
@@ -33,19 +36,38 @@ public class Test {
 //            AnnotationProcessor.process(new AnnotationTest());
 //        } catch (Exception e) {
 //            throw new RuntimeException(e);
+
 //        }
 
 
 
+            //拷贝测试  哈希
+
+        Scanner scanner = new Scanner(System.in);
+        String string = scanner.next();
+        char[] chars = string.toCharArray();
+        int litter=0,big=0;
+        for (int i = 0; i < chars.length; i++) {
+            if ('A'<=chars[i]&&chars[i]<='Z'){
+                big++;
+            }
+            else if ('a'<=chars[i]&&chars[i]<='z')
+            {
+                litter++;
+            }
+        }
+        System.out.println("大写字母有"+big+"个");
+        System.out.println("小写字母有"+litter+"个");
     }
 
 
-    public void newMethod(){
+    public void testClone(){
+
+
+
 
 
     }
-
-
 
 
 
