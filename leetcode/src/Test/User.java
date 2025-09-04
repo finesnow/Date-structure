@@ -35,24 +35,28 @@ public class User implements Cloneable {
     public int hashCode() {
         return Objects.hash(username, password, age, dog);
     }
-
+    /**
+     * @discription 重写clone方法 可以实现递归克隆
+     * @author dme
+     * @date 2025/9/1 22:29
+     * @return {@code Test.User}
+     **/
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-
-
-        return super.clone();
+    protected User clone() throws CloneNotSupportedException {
+        User clone = (User) super.clone();
+        clone.dog = this.dog.clone();
+        return clone ;
     }
 
     public static void main(String[] args) throws CloneNotSupportedException {
 
 
-        Dog dog = new Dog("劳狗",5);
-
-
+        Dog dog = new Dog("牢狗",5);
         User user1 = new User("神棍","123",25,dog);
 
         System.out.println(user1.dog.getDogName());
         User user2 = (User) user1.clone();
+
         user2.dog.setDogName("选购");
         System.out.println(user1.dog.getDogName());
 

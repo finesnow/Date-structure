@@ -1,12 +1,14 @@
 package Test;
 
+import java.util.Objects;
+
 /**
  * @author Administrator
  * @Date 2025/9/1 16:38
  * @package Test
  * @Description:
  */
-public class Dog {
+public class Dog implements Cloneable{
 
     private String dogName;
     private int age;
@@ -32,5 +34,27 @@ public class Dog {
         return age;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Dog dog)) return false;
+        return getAge() == dog.getAge() && Objects.equals(getDogName(), dog.getDogName());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDogName(), getAge());
+    }
+
+    @Override
+    public Dog clone() throws CloneNotSupportedException {
+        return (Dog) super.clone();
+    }
+
+    @Override
+    public String toString() {
+        return "Dog{" +
+                "dogName='" + dogName + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
