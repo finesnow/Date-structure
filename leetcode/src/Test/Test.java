@@ -81,9 +81,13 @@ public class Test {
 //        LocalDateTime localDateTime1 = zonedDateTime.toLocalDateTime();  //转本地时间
 //        ZonedDateTime.of(localDateTime1, ZoneId.systemDefault()); //本地时间转时区时间  结合具体时区
 
-
-       List<Integer> integerList = List.of(1,5,9,7,11,5,3);
-       integerList.forEach(System.out::println);
+        ArrayList<Integer> arrayList = new ArrayList<>(10);
+        for (int i = 0; i < 10; i++) {
+            arrayList.add(i);
+        }
+        Spliterator<Integer> spliterator = arrayList.spliterator();
+        System.out.println(spliterator.estimateSize()); //估计剩余元素 输出10
+        System.out.println(spliterator.tryAdvance(System.out::println));//先操作数据元素 再返回还没有后序
 
     }
 

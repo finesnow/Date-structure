@@ -96,10 +96,7 @@ public class HashTable {
                         table[index] = start.next;
                     }
                     size--;
-
-
                     return start.value;
-
                 }
                 pre = start;
                 start = start.next;

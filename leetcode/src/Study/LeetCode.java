@@ -518,7 +518,13 @@ public class LeetCode {
         return i;
 
     }
-
+    /** 计数排序
+     * @author dme
+     * @date 2025/9/6 20:11
+     * @param nums
+     * @return {@code }
+     *
+     **/
     public void  countSort(int[] nums){
         int max = nums[0]; int min = nums[0];
         for (int num : nums) {
