@@ -1,7 +1,6 @@
 package Study;
 
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 import java.util.LinkedList;
 
 /*
@@ -519,5 +518,38 @@ public class LeetCode {
         return i;
 
     }
+
+    public void  countSort(int[] nums){
+        int max = nums[0]; int min = nums[0];
+        for (int num : nums) {
+            if (num>max)
+                max = num;
+            if (num<min)
+                min = num;
+        }
+        int offset = 0; //偏移量 用来处理存在负数的情况
+        if (min<0){
+            offset = -min;
+        }
+        int[] count = new int[max+offset+1];
+        for (int num : nums) {
+            count[num+offset] += 1;
+        }
+        int index = 0;
+        for (int i = 0; i < count.length; i++) {
+            for (int j = 0; j < count[i]; j++) {
+                nums[index] = i-offset;
+                index++;
+            }
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+
+    public static void main(String[] args) {
+
+
+
+    }
+
 
 }

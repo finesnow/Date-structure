@@ -1,8 +1,8 @@
 package Solutions;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 
 /**
  * @author Administrator
@@ -324,6 +324,86 @@ public class Solution {
 
         }
         return p+1;
+    }
+
+    /**
+     * @discription 如果我能确定一个中位数
+     * @author dme
+     * @date 2025/9/4 21:41
+     * @param nums
+     * @return {@code int}
+     **/
+    public int majorityElement(int[] nums) {
+
+        int index = nums.length/2;
+        Arrays.sort(nums);
+        return nums[index];
+    }
+
+    public void rotate(int[] nums, int k) {
+        if (k>=nums.length)
+        {
+            k = k%nums.length;
+        }
+        if (k==0){
+            return;
+        }
+
+
+        int[] movedNums = Arrays.copyOfRange(nums,nums.length-k,nums.length);
+
+        System.arraycopy(nums,0,nums,k,nums.length-k);
+
+        System.arraycopy(movedNums,0,nums,0,k);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    public int change(int amount, int[] coins) {
+
+        //每次从大面值的开始凑
+        int remain = amount;
+
+        int count = 0;
+
+        for (int i = 0; i < coins.length; i++) {
+            while (remain>=coins[i])
+            {
+                remain -= coins[i];
+                System.out.println("使用一个"+coins[i]);
+                count++;
+            }
+        }
+        if (remain>0){
+            return -1;
+        }
+        else {
+            return count;
+        }
+    }
+
+    public int maxProfit(int[] prices) {
+
+
+
+        int maxProfit = 0;
+
+        for (int i = 0; i < prices.length-1; i++) {
+            int max = getMax(i+1,prices);
+            if (max>prices[i]){
+                maxProfit =Math.max (max-prices[i],maxProfit);
+            }
+        }
+        return maxProfit;
+
+    }
+
+    public int getMax(int index ,int[] nums){
+        int max = nums[index];
+        for (int i = index+1; i < nums.length; i++) {
+            if (nums[i]>max)
+                max = nums[i];
+        }
+        return max;
     }
 
 }

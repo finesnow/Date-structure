@@ -1,5 +1,6 @@
 package Test;
 
+import java.util.Collection;
 import java.util.Objects;
 import Test.Dog;
 /**
