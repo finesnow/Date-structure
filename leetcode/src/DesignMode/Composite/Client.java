@@ -30,8 +30,8 @@ public class Client {
 
 
 
-        Entry entry = directory2;
-        entry.show();
+        AbstractEntry abstractEntry = directory2;
+        abstractEntry.show();
 
     }
 }

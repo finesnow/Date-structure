@@ -8,14 +8,14 @@ import java.util.ArrayList;
  * @see
  * @since JDK 17
  */
-public class Directory extends Entry{
+public class Directory extends AbstractEntry {
     private String DirectoryName;
-    private ArrayList<Entry> entryArrayList;
+    private ArrayList<AbstractEntry> abstractEntryArrayList;
     private int DirectorySize;
 
     public Directory(String directoryName) {
         DirectoryName = directoryName;
-        entryArrayList = new ArrayList<>(20);
+        abstractEntryArrayList = new ArrayList<>(20);
         DirectorySize = 0;
     }
 
@@ -26,20 +26,20 @@ public class Directory extends Entry{
 
     @Override
     public int getSize() {
-        return entryArrayList.size();
+        return abstractEntryArrayList.size();
     }
     @Override
-    public void  add(Entry entry){
-        entryArrayList.add(entry);
-        System.out.println("添加了："+entry.getName());
-        this.DirectorySize +=entry.getSize();
+    public void  add(AbstractEntry abstractEntry){
+        abstractEntryArrayList.add(abstractEntry);
+        System.out.println("添加了："+ abstractEntry.getName());
+        this.DirectorySize += abstractEntry.getSize();
     }
 
     @Override
     public void show() {
         System.out.println(this.DirectoryName+"文件夹包括:");
         System.out.println("{");
-        entryArrayList.forEach(Entry::show);
+        abstractEntryArrayList.forEach(AbstractEntry::show);
         System.out.println("}");
     }
 }

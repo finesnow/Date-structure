@@ -6,7 +6,7 @@ package DesignMode.Composite;
  * @see
  * @since JDK 17
  */
-public class File extends Entry {
+public class File extends AbstractEntry {
     private String fileName;
     private int fileSize;
 

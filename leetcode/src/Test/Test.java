@@ -1,15 +1,10 @@
 package Test;
 
-
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.text.DecimalFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.*;
-import java.util.*;
-import java.util.function.Consumer;
-
-import static java.util.ArrayList.*;
+import java.util.Scanner;
 
 /**
  * @author Administrator
@@ -19,7 +14,7 @@ import static java.util.ArrayList.*;
  */
 public class Test {
 
-    public static void main(String[] args) throws UnsupportedEncodingException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException {
 //             Season autumn = Season.AUTUMN;
 //             //name()输出的是常量的名字，也就是AUTUMN  这里的名字是指我们对这个常量的命名，不是这个常量对象的某个属性”秋天“
 //             System.out.println(autumn.name());
@@ -36,7 +31,7 @@ public class Test {
 //               } catch (Exception e) {
 //                   throw new RuntimeException(e);
 //               }
-//                Scanner scanner = new Scanner(System.in);
+
 //                SimpleDateFormat simpleDateFormat  = new SimpleDateFormat("yyyy-MM-dd");
 //                String input = scanner.next();
 //                Calendar calendar = Calendar.getInstance();
@@ -80,41 +75,46 @@ public class Test {
 //        ZonedDateTime zonedDateTime = ZonedDateTime.now();      //本地时区的时区时间
 //        LocalDateTime localDateTime1 = zonedDateTime.toLocalDateTime();  //转本地时间
 //        ZonedDateTime.of(localDateTime1, ZoneId.systemDefault()); //本地时间转时区时间  结合具体时区
+        Scanner scanner = new Scanner(System.in);
+        File file = new File("D:\\develop\\workspace");
+        System.out.println(new Test().countJava(file,0));
 
-        ArrayList<Integer> arrayList = new ArrayList<>(10);
-        for (int i = 0; i < 10; i++) {
-            arrayList.add(i);
+    }
+
+    public void deleteFiles(File file) {
+        if (file.isFile()) {
+            if (file.delete())
+                System.out.println("文件" + file.getName() + "已删除");
+            return;
+        } else if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File file1 : files) {
+                    deleteFiles(file1);
+                }
+            }
+            if (file.delete())
+                System.out.println("文件夹[" + file.getName() + "]已删除");
         }
-        Spliterator<Integer> spliterator = arrayList.spliterator();
-        System.out.println(spliterator.estimateSize()); //估计剩余元素 输出10
-        System.out.println(spliterator.tryAdvance(System.out::println));//先操作数据元素 再返回还没有后序
-
     }
 
-    public int testMethod(int a, int b) {
-        return a + b * b;
-    }
-
-    public int[] multiply(int[] num1, int[] num2) {
-
-        int[] result = new int[num1.length + num2.length];
-
-        for (int i = 0; i < num1.length; i++) {
-            for (int j = 0; j < num2.length; j++) {
-                result[i + j] += num1[i] + num2[j];
+    public int countJava(File file ,int count ){
+        if (file.isFile())
+        {
+            if (file.getName().endsWith(".java")||file.getName().endsWith(".class"))
+            {
+                System.out.println(file.getName());
+                return count+1;
             }
         }
-        int carry = 0;
-
-        for (int i = 0; i < result.length; i++) {
-            int value = result[i];
-            result[i] = (value + carry) % 10;
-            carry = (value + carry) / 10;
-
+        File[] files = file.listFiles();
+        if (files != null) {
+            for (File thefile : files) {
+              count =   countJava(thefile,count);
+            }
         }
-        return result;
+        return count;
     }
-
 
 }
 

@@ -1,7 +1,10 @@
 package Test;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.Scanner;
+
 import Test.Dog;
 /**
  *@author Administrator
@@ -10,7 +13,7 @@ import Test.Dog;
  *@Description:
  
  */
-public class User implements Cloneable {
+public class User<T extends Scanner> implements Cloneable {
     /**
      * 属性的文档注释
      */
@@ -24,6 +27,10 @@ public class User implements Cloneable {
         this.password = password;
         this.age = age;
         this.dog = dog;
+    }
+
+    public User() {
+
     }
 
     @Override
@@ -47,6 +54,10 @@ public class User implements Cloneable {
         User clone = (User) super.clone();
         clone.dog = this.dog.clone();
         return clone ;
+    }
+
+    public <K > boolean testT(K k,T t){
+        return k instanceof HashMap<?,?>;
     }
 
     public static void main(String[] args) throws CloneNotSupportedException {

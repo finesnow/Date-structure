@@ -6,7 +6,7 @@ package DesignMode.Adapter;
  * @package DesignMode.Adapter
  * @Description: 调用者
  */
-public class User {
+public class Client {
 
     public static void main(String[] args) {
         //这样做 能够让一个原本不兼容的类为我们工作 当业务逻辑变更时 我们只需要换不同的适配器即可

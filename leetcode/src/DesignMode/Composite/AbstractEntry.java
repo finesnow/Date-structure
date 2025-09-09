@@ -6,13 +6,13 @@ package DesignMode.Composite;
  * @see
  * @since JDK 17
  */
-public  abstract  class Entry {
+public  abstract  class AbstractEntry {
 
  public  abstract String getName();
 
  public abstract int getSize();
 
- public void add(Entry entry){
+ public void add(AbstractEntry abstractEntry){
      throw  new RuntimeException();
  }
 

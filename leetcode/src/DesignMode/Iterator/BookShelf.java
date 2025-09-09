@@ -14,6 +14,28 @@ public class BookShelf implements Iterable<Book>{
 
     private int last;
 
+    class BookShelfIterator implements java.util.Iterator<Book>{
+        private int index;
+
+        @Override
+        public boolean hasNext() {
+            return index < last;
+        }
+
+        @Override
+        public Book next() {
+            if (index>=Books.length)
+                throw new IndexOutOfBoundsException();
+            if (index>=last)
+                throw new IllegalArgumentException();
+
+            Book book = Books[index];
+            index++;
+            return book;
+        }
+    }
+
+
     public BookShelf(int capacity) {
         Books = new Book[capacity];
         last = 0;
@@ -48,16 +70,15 @@ public class BookShelf implements Iterable<Book>{
      **/
     @Override
     public Iterator<Book> iterator() {
-        return new BookShelfIterator(this);
+        return new BookShelfIterator();
     }
 
     public static void main(String[] args) {
         BookShelf bookShelf = new BookShelf(64);
         bookShelf.inti();
 
-        Iterator<Book> iterator = bookShelf.iterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next());
+        for (Book book : bookShelf) {
+            System.out.println(book);
         }
 
     }

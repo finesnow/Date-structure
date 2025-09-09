@@ -11,7 +11,7 @@ public class Adapter extends Adaptee implements Target {
     @Override
     public void businessMethod() {
         System.out.println("Adapter业务逻辑1");
-        super.AdapteeMethod();
+        AdapteeMethod();
         System.out.println("Adapter业务逻辑2");
     }
 

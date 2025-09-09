@@ -67,7 +67,7 @@ public interface InterFaceA {
         System.out.println(interFaceA.toString());
         interFaceA = Integer::sum;
         Test test = new Test();
-        interFaceA = test::testMethod;
+
 
         Function<String, Integer> str = String::length;
 
