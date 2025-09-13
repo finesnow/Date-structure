@@ -8,6 +8,9 @@ package DesignMode.Strategy;
  */
 public interface IntSorter {
     void Sort(int[] nums);
+
+
+
     default void print(){
 
         System.out.println();

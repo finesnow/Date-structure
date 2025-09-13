@@ -1,8 +1,7 @@
-package Test;
+package FileIO;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ import java.util.Scanner;
  * @package Test
  * @Description:
  */
-public class Test {
+public class TestDemo {
 
     public static void main(String[] args) throws IOException, ParseException {
 //             Season autumn = Season.AUTUMN;
@@ -77,7 +76,7 @@ public class Test {
 //        ZonedDateTime.of(localDateTime1, ZoneId.systemDefault()); //本地时间转时区时间  结合具体时区
         Scanner scanner = new Scanner(System.in);
         File file = new File("D:\\develop\\workspace");
-        System.out.println(new Test().countJava(file,0));
+        System.out.println(new TestDemo().countJava(file,0));
 
     }
 
@@ -110,7 +109,7 @@ public class Test {
         File[] files = file.listFiles();
         if (files != null) {
             for (File thefile : files) {
-              count =   countJava(thefile,count);
+              count = countJava(thefile,count);
             }
         }
         return count;

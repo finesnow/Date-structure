@@ -1,9 +1,6 @@
-package Test;
+package TestDemos;
 
-import java.nio.file.FileAlreadyExistsException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.concurrent.CompletionException;
 
 /**
  * @author Administrator

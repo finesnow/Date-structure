@@ -26,6 +26,9 @@ public class User {
         this.age = builder.age;
         this.email = builder.email;
     }
+    public static  Builder builder(String id,String username){
+        return  new Builder(id,username);
+    }
 
     // Getter方法（无setter，保证对象不可变）
     public String getId() { return id; }

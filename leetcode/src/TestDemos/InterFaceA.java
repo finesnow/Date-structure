@@ -1,4 +1,6 @@
-package Test;
+package TestDemos;
+
+import FileIO.TestDemo;
 
 import java.util.function.Function;
 
@@ -66,7 +68,7 @@ public interface InterFaceA {
         interFaceA = Math::min;
         System.out.println(interFaceA.toString());
         interFaceA = Integer::sum;
-        Test test = new Test();
+        TestDemo testDemo = new TestDemo();
 
 
         Function<String, Integer> str = String::length;

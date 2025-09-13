@@ -6,10 +6,9 @@ package DesignMode.Builder;
  * @package DesignMode.Builder
  * @Description:
  */
-public class Cilent {
+public class Client {
 
     public static void main(String[] args) {
-        User user = new User.Builder("123456","dme").age(12).email("173763@qq.com").build();
-
+        User user = User.builder("123456","dme").age(12).email("173763@qq.com").build();
     }
 }

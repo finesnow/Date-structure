@@ -1,11 +1,10 @@
-package Test;
+package TestDemos;
 
-import java.util.Collection;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.Scanner;
 
-import Test.Dog;
 /**
  *@author Administrator
  *@Date  2025/9/1 14:37
@@ -13,7 +12,7 @@ import Test.Dog;
  *@Description:
  
  */
-public class User<T extends Scanner> implements Cloneable {
+public class User implements Cloneable , Serializable {
     /**
      * 属性的文档注释
      */
@@ -21,6 +20,8 @@ public class User<T extends Scanner> implements Cloneable {
     private String password;
     private int age;
     Dog dog;
+    @Serial
+    private final static long serialVersionUID  = 198425615451L;
 
     public User(String username, String password, int age, Dog dog) {
         this.username = username;
@@ -56,7 +57,7 @@ public class User<T extends Scanner> implements Cloneable {
         return clone ;
     }
 
-    public <K > boolean testT(K k,T t){
+    public <K > boolean testT(K k){
         return k instanceof HashMap<?,?>;
     }
 
