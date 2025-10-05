@@ -18,8 +18,6 @@ public class Consumer implements Runnable {
     public void run() {
         for (int i = 0; i < 100; i++) {
 
-        //    area.consume();
-        //    area.lockConsume();
             area.consumeMoreThread();
         }
     }

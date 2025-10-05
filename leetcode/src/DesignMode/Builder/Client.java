@@ -9,6 +9,13 @@ package DesignMode.Builder;
 public class Client {
 
     public static void main(String[] args) {
-        User user = User.builder("123456","dme").age(12).email("173763@qq.com").build();
+    //需求变更时 修改配置文档来注入不同的 AbstractBuilder 实现类
+
+    Director director = new Director(new OfoBikeBuilder());
+
+    Bike bike = director.construct();
+
+    User user = User.builder("12306","铁路安全").age(12).email("17653").build();
+        System.out.println(user);
     }
 }

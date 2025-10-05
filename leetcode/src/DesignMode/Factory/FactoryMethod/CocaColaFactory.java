@@ -1,4 +1,4 @@
-package DesignMode.Factory;
+package DesignMode.Factory.FactoryMethod;
 
 /**
  * @author Administrator

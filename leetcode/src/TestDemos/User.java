@@ -20,8 +20,8 @@ public class User implements Cloneable , Serializable {
     private String password;
     private int age;
     Dog dog;
-    @Serial
-    private final static long serialVersionUID  = 198425615451L;
+
+//    private final static long serialVersionUID  = 198425615451L;
 
     public User(String username, String password, int age, Dog dog) {
         this.username = username;
@@ -38,6 +38,16 @@ public class User implements Cloneable , Serializable {
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
         return age == user.age && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(dog, user.dog);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", dog=" + dog +
+                '}';
     }
 
     @Override

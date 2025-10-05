@@ -9,6 +9,8 @@ package DesignMode.Factory.AbstractFactory;
 public class Client {
     public static void main(String[] args) {
         SuitFactory factory = new GoldSuitFactory();
+
+
         Weapon weapon = factory.creatWeapon();
         Equipment equipment = factory.creatEquipment();
     }

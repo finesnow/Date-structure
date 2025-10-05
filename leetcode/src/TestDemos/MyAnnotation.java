@@ -11,8 +11,12 @@ import java.lang.annotation.*;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+
 public @interface MyAnnotation {
     int num1() default 0;
-    int num2() default 0;
+    int num2() ;
+    Class clazz();
+    String s();
+    int[] arr();
 }
 

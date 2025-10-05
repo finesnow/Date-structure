@@ -39,6 +39,8 @@ public class ResourceArea {
      **/
     public synchronized void product() {
         //未到area的执行时机 或者 资源区已满
+        //flag相当于信号量  对信号量的操作必须是原子化的
+        //这里相当于P(flag)
         if (!flag || products >= MAX_CAPACITY) {
             try {
                 this.wait();
@@ -50,6 +52,7 @@ public class ResourceArea {
         int yield = Math.min(random.nextInt(100, 200), MAX_CAPACITY - products);
         products += yield;
         System.out.println("生产了:" + yield + "资源区剩余:" + products);
+        //这里相当于V(flag)
         flag = false;
         notify();
     }
@@ -85,6 +88,7 @@ public class ResourceArea {
     public void lockProduct() {
         try {
             lock.lock();
+
             //未到area的执行时机 或者 资源区已满
             if (!flag || products >= MAX_CAPACITY) {
                 try {

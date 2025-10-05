@@ -16,4 +16,6 @@ public class GoldSuitFactory implements SuitFactory{
     public Equipment creatEquipment() {
         return new GoldEquipment();
     }
+
+
 }

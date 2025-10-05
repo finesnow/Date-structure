@@ -6,6 +6,7 @@ package DesignMode.Prototype;
  * @package DesignMode.Prototype
  * @Description:
  */
-public interface Prototype extends Cloneable{
-    Object getClone(Integer id);
+public interface Prototype { //这个接口在java中已经有了 CloneAble  直接继承CloneAble即可
+
+    Object Clone();
 }

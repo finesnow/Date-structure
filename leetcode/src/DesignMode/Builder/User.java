@@ -26,8 +26,19 @@ public class User {
         this.age = builder.age;
         this.email = builder.email;
     }
-    public static  Builder builder(String id,String username){
+    public static Builder builder(String id,String username){
         return  new Builder(id,username);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                '}';
     }
 
     // Getter方法（无setter，保证对象不可变）
